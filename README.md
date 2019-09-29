@@ -40,29 +40,30 @@ However, if we want to personalize the number of folds, we need to specify the `
 
 ### Multi-threaded execution of VIC
 To optimize the time performance for the execution of the algorithm, it is possible to parallelize the processes. This process requires package `'doParallel'`.
+
 Check https://cran.r-project.org/web/packages/doParallel/vignettes/gettingstartedParallel.pdf for further information.
 
-There are two suggest methods to parallelize the execution of the code. The first one specifies the number of workers to use via the `makeCluster` function:
+There are two suggested methods to parallelize the execution of the code. The first one specifies the number of workers to use via the `makeCluster` function:
 
     library(doParallel)
     cl <- makeCluster(2) 
-    # The following lines run in parallel
     registerDoParallel(cl)
+    # The following lines run in parallel
     ptime <- system.time({
             new.vic <- VIC(mtcars) 
     })[3]
-    ptime
+    ptime # check execution time
     stopCluster(cl) # parallel execution ends here
 
 
-The second one select the number of cores to use, by specifying it in the `registerDoParallel`function:
+The second one selects the number of cores to use by specifying it in the `registerDoParallel`function:
 
     registerDoParallel(cores = 2) 
     # The following lines run in parallel
     stime <- system.time({
             new.vic <- VIC(mtcars) 
     })[3]
-    stime
+    stime # check execution time
     stopImplicitCluster() # parallel execution ends here
 
 
