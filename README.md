@@ -1,5 +1,3 @@
-
-
 # VIC in R
 Implementation of the VIC algorithm in R.
 
@@ -37,8 +35,9 @@ The simplest way to test the VIC algorithm is with the default options (10-fold 
     defaul.vic
 
 
-However, if we want to personalize the number of folds, we need to specify the `k` and `ctrl` arguments of the function. Additionally, we can specify other `classifiers` (as a list to pass to the function) to test the cluster with:
+However, if we want to personalize the number of folds, we need to specify the `k` and `ctrl` arguments of the function. Additionally, we can specify other `classifiers` as a list containing the methods to test the cluster with. These classifiers must be a string from the available models for the `train` function from the `'caret'`package. The complete list is available at https://topepo.github.io/caret/available-models.html.
 
+In this example we are trying k-Nearest Neighbors, Multi-Layer Perceptron, Parallel Random Forest, Model Averaged Neural Network, and Support Vector Machines with Linear Kernel:
 
     myctrl <- trainControl(method = "cv",  
                        number = 5,    # number of folds                   
