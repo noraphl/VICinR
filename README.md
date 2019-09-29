@@ -72,7 +72,7 @@ There are two suggested methods to parallelize the execution of the code. The fi
 
 
 
-The second one selects the number of cores to use by specifying it in the `registerDoParallel`function:
+The second one selects the number of cores to use by specifying the `cores` arguments in the `registerDoParallel` function:
 
 
     registerDoParallel(cores = 2)
